@@ -1,0 +1,282 @@
+body {
+    background-blend-mode: hard-light;
+}
+
+.head {
+    position: absolute;
+    width: 30%;
+    height: 10%;
+    left: 49%;
+    top: 12%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 350%;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.welcome {
+    position: fixed;
+    width: 20%;
+    height: 4%;
+    left: 49%;
+    top: 20%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#username {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30%;
+    height: 5%;
+    left: 49%;
+    top: 29%;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+}
+
+#fname {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30%;
+    height: 5%;
+    left: 49%;
+    top: 38%;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+}
+
+#lname {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30%;
+    height: 5%;
+    left: 49%;
+    top: 47%;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+}
+
+#email {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30%;
+    height: 5%;
+    left: 49%;
+    top: 56%;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+}
+
+#pass1 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30%;
+    height: 5%;
+    left: 49%;
+    top: 65%;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+}
+
+#pass2 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30%;
+    height: 5%;
+    left: 49%;
+    top: 74%;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+}
+
+.username {
+    position: absolute;
+    width: 10%;
+    height: 3%;
+    left: 49%;
+    top: 26%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.fname {
+    position: absolute;
+    width: 10%;
+    height: 3%;
+    left: 49%;
+    top: 35%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+.lname {
+    position: absolute;
+    width: 10%;
+    height: 3%;
+    left: 49%;
+    top: 44%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.email {
+    position: absolute;
+    width: 10%;
+    height: 3%;
+    left: 49%;
+    top: 53%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.pass1 {
+    position: absolute;
+    width: 10%;
+    height: 3%;
+    left: 49%;
+    top: 62%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.pass2 {
+    position: absolute;
+    width: 15%;
+    height: 3%;
+    left: 49%;
+    top: 71%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.but {
+    box-sizing: border-box;
+    position: absolute;
+    width: 8%;
+    height: 5%;
+    left: 77%;
+    top: 81%;
+    color: #ffffff;
+    background-color: #84569541;
+    background-blend-mode: hard-light;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+}
+
+.but:hover {
+    box-sizing: border-box;
+    position: fixed;
+    width: 8%;
+    height: 5%;
+    left: 77%;
+    top: 81%;
+    color: #ffffff;
+    background-color: #845695;
+    background-blend-mode: hard-light;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+}
+
+#new {
+    position: absolute;
+    width: 20%;
+    height: 4%;
+    left: 66%;
+    top: 11%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.register {
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #84569541;
+    position: absolute;
+    width: 8%;
+    height: 5%;
+    left: 77%;
+    top: 12%;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+}
+
+.register:hover {
+    color: #ffffff;
+    box-sizing: border-box;
+    background-color: #845695;
+    position: absolute;
+    width: 8%;
+    height: 5%;
+    left: 77%;
+    top: 12%;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+}
+
+.signupimg {
+    position: absolute;
+    width: 267px;
+    height: 276px;
+    left: 215px;
+    top: 301px;
+}
