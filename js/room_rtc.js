@@ -249,3 +249,23 @@ document
 document.getElementById("leave-button").addEventListener("click", leaveSession);
 
 joinRoomInit();
+
+// Modellllll
+// const poseModelURL =
+//   "https://teachablemachine.withgoogle.com/models/UnD9KdVhZ/";
+// let model, webcam, ctx, labelContainer, maxPredictions;
+
+// async function initModel() {
+//   const modelURL = poseModelURL + "model.json";
+//   const metadataURL = poseModelURL + "metadata.json";
+
+//   model = await tmPose.load(modelURL, metadataURL);
+//   maxPredictions = model.getTotalClasses();
+
+//   const flip = true;
+//   webcam = localTracks[1];
+//   console.log(webcam);
+//   window.requestAnimationFrame(loop);
+// }
+
+// document.getElementById("test-button").addEventListener("click", initModel);

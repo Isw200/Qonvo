@@ -27,9 +27,6 @@
 }
 
 body {
-  background-color: #1a1a1a;
-  color: #fff;
-
   font-size: 14px;
   padding: 0;
   margin: 0;
@@ -63,11 +60,11 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #000000;
-  background-color: #1a1a1a;
+  background-color: #ffffff;
   text-decoration: none;
   padding: 16px 5%;
   z-index: 999;
+  height: 5em;
 }
 
 #logo {
@@ -78,7 +75,7 @@ a {
   font-weight: 700;
   line-height: 0;
   margin: 0;
-  color: #ebe0e0;
+  color: #a5a5a5;
 }
 
 @media (max-width: 640px) {
