@@ -50,7 +50,6 @@ let getMembers = async () => {
 
 // Messages
 let handleChannelMessage = async (message, memberId) => {
-  console.log("New message from: ");
   let data = JSON.parse(message.text);
 
   if (data.type === "chat") {
@@ -101,7 +100,7 @@ let addBotMessageToDom = (botMessage) => {
 
   let newMessage = `<div class="message__wrapper">
                         <div class="message__body__bot">
-                            <strong class="message__author__bot">🤖 System Bot</strong>
+                            <strong class="message__author__bot">System Bot</strong>
                             <p class="message__text__bot">${botMessage}</p>
                         </div>
                     </div>`;
