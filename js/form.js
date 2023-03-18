@@ -1,4 +1,3 @@
-var email = document.getElementById("email");
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
    var email = document.getElementById("email");
@@ -15,6 +14,7 @@ var email = document.getElementById("email");
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const auth =  firebase.auth();
+  var contactFormDB = firebase.database().ref("contactForm");
 
   //signup function
   function signUp(){
@@ -64,10 +64,18 @@ var email = document.getElementById("email");
     var lname = document.getElementById('lname').value;
     var pass1 = document.getElementById('pass1').value;
     var email = document.getElementById('email').value;
-    firebase.database().ref(email).set({username:username,
-      fname:fname,
-      lname:lname,
-      pass1:pass1});
+    saveMessages(username, fname, lname,email,pass1);
   }
 // password eka nethuwa weda
-//
+
+const saveMessages = (username, fname, lname,email,pass1) => {
+  var newContactForm = contactFormDB.push();
+
+  newContactForm.set({
+    username: username,
+    fname: fname,
+    lname: lname,
+    email: email,
+    pass1:pass1,
+  });
+};
