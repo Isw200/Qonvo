@@ -1,6 +1,5 @@
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-   var email = document.getElementById("email");
   const firebaseConfig = {
     apiKey: "AIzaSyAwIy35nxtyzZ6xcy8VLJmyfNN0GL0NvvY",
     authDomain: "convo-5f354.firebaseapp.com",
@@ -14,7 +13,7 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const auth =  firebase.auth();
-  var contactFormDB = firebase.database().ref("contactForm");
+  var userDB = firebase.database();
 
   //signup function
   function signUp(){
@@ -28,7 +27,8 @@
       if(user){
         var email = user.email;
         alert("SignUp Successfully");
-        window.location = `lobby.html`;
+        localStorage.setItem('myobj',email);
+        window.location.href="lobby.html";
       }else{
         
       }
@@ -44,38 +44,32 @@
     firebase.auth().onAuthStateChanged((user)=>{
       if(user){
         var email = user.email;
-        alert("Active user "+email);
-        window.location = `lobby.html`;
+        localStorage.setItem('myobj',email);
+        window.location.href="lobby.html";
       }else{
         
       }
     })
   }
 
-  //signOut
-
-  function signOut(){
-    auth.signOut();
-    alert("SignOut Successfully from System");
-  }
-  function saveData(){
-    var username = document.getElementById('username').value;
+// password eka nethuwa weda
+function save(){
+  var username = document.getElementById('username').value;
     var fname = document.getElementById('fname').value;
     var lname = document.getElementById('lname').value;
     var pass1 = document.getElementById('pass1').value;
     var email = document.getElementById('email').value;
-    saveMessages(username, fname, lname,email,pass1);
-  }
-// password eka nethuwa weda
-
-const saveMessages = (username, fname, lname,email,pass1) => {
-  var newContactForm = contactFormDB.push();
-
-  newContactForm.set({
+    userDB.ref('Users/'+ username).set({
     username: username,
     fname: fname,
     lname: lname,
     email: email,
     pass1:pass1,
-  });
+  })
+  localStorage.setItem("userid", email);
 };
+function signOut(){
+        auth.signOut();
+        alert("SignOut Successfully from System");
+        window.location = `login.html`;
+      }

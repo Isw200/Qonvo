@@ -23,6 +23,10 @@
       media="screen"
       href="styles/navbar.css"
     />
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="js/form.js"></script>
   </head>
   <body>
     <!-- navigation bar -->
@@ -49,8 +53,7 @@
             <img src="images/2.PNG" alt="">
           </div>
           <div class="user_name">
-            <h4>John Doe</h4>
-            <p>johndoe@gmail.com</p>
+            <h4><span id="myobj"></span></h4>
           </div>
         </div>
        
@@ -169,6 +172,17 @@
         </div>
       </div>
     </main>
+    <button onclick="signOut()">sign out</button>
+    <script>
+      var myobj=localStorage.getItem('myobj');
+      document.getElementById('myobj').textContent=myobj;
+      var database=firebase.database();
+      var user_ref =database.ref('Users/'+ myobj)
+      user_ref.on('value',function(snapshot){
+        var data=snapshot.val()
+        var uid=data.username;
+      })
+    </script>
   </body>
   <script type="text/javascript" src="js/contentSwitcher.js"></script>
   <script type="text/javascript" src="js/lobby.js"></script>
