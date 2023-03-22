@@ -247,25 +247,108 @@ document
   .getElementById("screen-button")
   .addEventListener("click", toggleScreen);
 document.getElementById("leave-button").addEventListener("click", leaveSession);
-
 joinRoomInit();
 
-// Modellllll
-// const poseModelURL =
-//   "https://teachablemachine.withgoogle.com/models/UnD9KdVhZ/";
-// let model, webcam, ctx, labelContainer, maxPredictions;
+// settings
 
-// async function initModel() {
-//   const modelURL = poseModelURL + "model.json";
-//   const metadataURL = poseModelURL + "metadata.json";
+// Turn on Safe Mode
+let safe_cam_switch = document.getElementById("safecam_switch");
 
-//   model = await tmPose.load(modelURL, metadataURL);
-//   maxPredictions = model.getTotalClasses();
+let safe_mode = false;
+let is_model_loaded = false;
 
-//   const flip = true;
-//   webcam = localTracks[1];
-//   console.log(webcam);
-//   window.requestAnimationFrame(loop);
-// }
+// Turn on Safe Mode check
+safe_cam_switch.addEventListener("click", async () => {
+  if (safe_cam_switch.checked) {
+    console.log("Safe Mode On");
+    safe_mode = true;
+    await initModel();
+  } else {
+    console.log("Safe Mode Off");
+    safe_mode = false;
+  }
+});
 
-// document.getElementById("test-button").addEventListener("click", initModel);
+// Pose Model
+
+const URL = "https://teachablemachine.withgoogle.com/models/UnD9KdVhZ/";
+let model, webcam, ctx, maxPredictions;
+
+async function initModel() {
+  console.log("Initializing");
+  const modelURL = URL + "model.json";
+  const metadataURL = URL + "metadata.json";
+
+  // load the model and metadata
+  // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+  // Note: the pose library adds a tmPose object to your window (window.tmPose)
+
+  if (!model) {
+    document.getElementById("loading_model").style.display = "block";
+  }
+
+  model = await tmPose.load(modelURL, metadataURL);
+
+  if (model) {
+    console.log("Model loaded");
+    document.getElementById("loading_model").style.display = "none";
+  }
+
+  maxPredictions = model.getTotalClasses();
+
+  // Convenience function to set up a webcam
+  const size = 200;
+  const flip = true; // whether to flip the webcam
+  webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+  console.log(webcam);
+  await webcam.setup(); // request access to the webcam
+  await webcam.play();
+  if (!safe_mode) {
+    webcam.pause();
+  }
+  await loop();
+  // append/get elements to the DOM
+  // const canvas = document.getElementById("canvas");
+  // canvas.width = size;
+  // canvas.height = size;
+  // ctx = canvas.getContext("2d");
+}
+
+async function loop(timestamp) {
+  is_model_loaded = true;
+  webcam.update(); // update the webcam frame
+  await predict();
+  await loop();
+}
+
+async function predict() {
+  // Prediction #1: run input through posenet
+  // estimatePose can take in an image, video or canvas html element
+  const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+  // Prediction 2: run input through teachable machine classification model
+  const prediction = await model.predict(posenetOutput);
+
+  for (let i = 0; i < maxPredictions; i++) {
+    const classPrediction =
+      prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+
+    if (prediction[i].probability.toFixed(2) > 0.8) {
+      if (prediction[i].className == "Correct") {
+        console.log("Correct");
+      } else {
+        console.log("Wrong");
+        cameraOff();
+      }
+    }
+  }
+}
+
+// Camera off function when wrong pose is detected
+async function cameraOff() {
+  if (safe_mode) {
+    await localTracks[1].setMuted(true);
+    document.getElementById("camera-button").classList.remove("active");
+  } else {
+    console.log("Not in safe mode");
+  }
+}
