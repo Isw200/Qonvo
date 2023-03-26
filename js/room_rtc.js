@@ -46,6 +46,12 @@ let joinRoomInit = async () => {
   channel.on("MemberLeft", handleMemberLeft);
   channel.on("ChannelMessage", handleChannelMessage);
 
+  //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  //___________________________________________________________error in this line
+  // channel.on("custom-report-message-received", handleReceiveImage);
+  //###############################################################
+  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
   getMembers();
   addBotMessageToDom(`${displayName} joined the room`);
 
