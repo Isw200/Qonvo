@@ -12,6 +12,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
     <script src="js/form.js"></script>
     
   </head>
@@ -72,7 +73,10 @@
           <label class="pass2"  for="">Confirm Password</label>
           <input type="password" id="pass2" name="pass2" placeholder="Enter Confirm Password" Required>
           <br>
-          <button class="but" onclick="signUp(),save()" type="submit">sign up</button>
+          <label class="profile"  for="">Select profile Picture</label>
+          <input type="file" id="fileUpload" />
+          <button class="but" onclick="uploadImage(),signUp(),save()" type="submit">sign up</button>
+          
       </div>
     </main>
   </body>

@@ -151,6 +151,23 @@
 
     color: #000000;
 
+    
+}
+.profile{
+   
+    width: 367px;
+    height: 33px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
 }
 .but{
     box-sizing: border-box;
