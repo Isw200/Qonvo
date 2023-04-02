@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pricing</title>
+
+    <link rel="stylesheet" href="styles/pricing.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/main.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/navbar.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="navbar__container">
+        <a href="#" class="navbar__logo">
+          <img src="images/Qonvo-logo.png" alt="" srcset="" />
+          <h2>Qonvo</h2>
+        </a>
+        <div class="cl-effect-5">
+          <a href="lobby.html"><span data-hover="Home">Home</span></a>
+          <a href="lobby.html"><span data-hover="Meeting">Meeting</span></a>
+          <a href="#"><span data-hover="Pricing">Pricing</span></a>
+          <a href="#"><span data-hover="Contact">Contact</span></a>
+        </div>
+
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span> <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <div class="user">
+          <div class="user_icon" href="">
+            <img src="images/2.PNG" alt="" />
+          </div>
+          <div class="user_name">
+            <h4>John Doe</h4>
+            <p>johndoe@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <h1>
+        <br /><br /><br />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+        mollitia tenetur quae atque, nostrum magnam natus fugiat debitis quo
+        nobis ducimus maiores id ad saepe. Dolorem similique totam unde omnis.
+      </h1>
+      <br />
+      <h2>Our Pricing</h2>
+      <div class="toggle">
+        <label>Annually </label>
+        <div class="toggle-btn">
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <label class="sub" id="sub" for="checkbox">
+            <div class="circle"></div>
+          </label>
+        </div>
+        <label> Monthly</label>
+      </div>
+    </header>
+    <div class="cards">
+      <div class="card shadow">
+        <ul>
+          <li class="pack">Basic</li>
+          <li id="basic" class="price bottom-bar">&dollar;FREE</li>
+          <li class="bottom-bar">Meetings</li>
+          <li class="bottom-bar">100 Users</li>
+          <li class="bottom-bar">Team chat</li>
+          <li class="bottom-bar">---------------------</li>
+          <li><button class="btn">Order Now</button></li>
+        </ul>
+      </div>
+      <div class="card active">
+        <ul>
+          <li class="pack">Professional</li>
+          <li id="professional" class="price bottom-bar">&dollar;249.99</li>
+          <li class="bottom-bar">Meetings</li>
+          <li class="bottom-bar">250 Users</li>
+          <li class="bottom-bar">10 GB Cloud Storage</li>
+          <li class="bottom-bar">Privacy Protected Camera</li>
+          <li><button class="btn active-btn">Order Now</button></li>
+        </ul>
+      </div>
+      <div class="card shadow">
+        <ul>
+          <li class="pack">Business</li>
+          <li id="master" class="price bottom-bar">&dollar;359.99</li>
+          <li class="bottom-bar">Meetings</li>
+          <li class="bottom-bar">500 Users</li>
+          <li class="bottom-bar">50 GB Cloud Storage</li>
+          <li class="bottom-bar">Privacy Protected Camera</li>
+          <li class="bottom-bar">Privacy Protected Chat</li>
+          <li class="bottom-bar">Privacy Protected Microphone</li>
+          <li><button class="btn">Order Now</button></li>
+        </ul>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
