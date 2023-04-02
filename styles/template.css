@@ -1,0 +1,25 @@
+.welcome{
+    margin-top: -110px;
+    margin-bottom: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 24px;
+
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.but{
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-left: 260px;
+    width: 141px;
+    height: 45px;
+
+    background: linear-gradient(180deg, rgba(0, 209, 255, 0) 0%, #00D1FF 100%);
+    background-blend-mode: hard-light;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
