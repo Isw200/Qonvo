@@ -829,3 +829,13 @@ Image upload
   display: none;
   transition: all 0.3s ease-in-out;
 }
+#testloadimage{
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  background: #00000068;
+  z-index: 2931247;
+}
+#testloadimage img{
+  width: 100%;
+}

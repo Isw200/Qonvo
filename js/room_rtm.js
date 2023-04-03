@@ -55,6 +55,9 @@ let handleChannelMessage = async (message, memberId) => {
 
   if (data.type === "chat") {
     addMessageToDom(data.displayName, data.message);
+  } else if (data.type === "image") {
+    console.log("Image reciving");
+    createImage(data);
   }
 };
 
@@ -152,12 +155,12 @@ const dropArea = document.querySelector(".drag-area"),
 let attachbutton = document.getElementById("attachbutton");
 
 attachbutton.onclick = () => {
-  console.log("clicked");
   input.click();
 };
 
 input.addEventListener("change", function () {
   file = this.files[0];
+  console.log(file);
   dropArea.classList.add("active");
   showFile();
 });
@@ -181,22 +184,26 @@ dropArea.addEventListener("drop", (event) => {
   showFile();
 });
 
-function showFile() {
-  let buttonContainer = document.getElementById("buttonContainer");
-  attachbutton.style.transform = "translateY(0px)";
-  sendImageButton.style.display = "block";
-  sendImageButton.style.transform = "translateY(0px)";
+let selectedImg_src = "";
 
+function showFile() {
+  console.log("file shown");
+  let buttonContainer = document.getElementById("buttonContainer");
   let fileType = file.type; //getting selected file type
+
   let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
   if (validExtensions.includes(fileType)) {
     let fileReader = new FileReader();
     fileReader.onload = () => {
       let fileURL = fileReader.result;
+      selectedImg_src = fileURL;
       let imgTag = `<img src="${fileURL}" alt="image">`;
       dropArea.innerHTML = imgTag;
     };
     fileReader.readAsDataURL(file);
+    attachbutton.style.transform = "translateY(0px)";
+    sendImageButton.style.display = "block";
+    sendImageButton.style.transform = "translateY(0px)";
   } else {
     alert("This is not an Image File!");
     dropArea.classList.remove("active");
@@ -206,28 +213,68 @@ function showFile() {
 
 sendImageButton.onclick = () => {
   sendImageHandler();
+
+  // reset drop area
+  attachButton.style.transform = "translateY(0px)";
+  dropArea.classList.remove("active");
 };
 
 // Sending Image
 let sendImageHandler = async () => {
   let image = file;
-  // let imageMessage = await channel.sendFileMessage(image);
-  // console.log(imageMessage);
   upload_image.style.display = "none";
-  attachbutton.style.transform = "translateY(50px)";
-  sendImageButton.style.transform = "translateY(50px)";
-  sendImageButton.style.display = "none";
-  addImageToDom(image);
+  // attachbutton.style.transform = "translateY(50px)";
+  // sendImageButton.style.transform = "translateY(50px)";
+  // sendImageButton.style.display = "none";
   handleSendImage(image);
 };
 
-let addImageToDom = (image) => {
+async function handleSendImage(imageFile) {
+  const base64String = await convertImageToBase64(imageFile);
+
+  channel.sendMessage({
+    text: JSON.stringify({
+      type: "image",
+      message: base64String,
+      displayName: displayName,
+    }),
+  });
+
+  addImageToDom(displayName, selectedImg_src);
+}
+
+// Receiving Image
+function createImage(data) {
+  const jsonString = `{"imgdata":${JSON.stringify(data.message)}}`;
+  displayBase64Image(data.displayName, data.message, "testloadimage");
+}
+
+function convertImageToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64String = btoa(reader.result);
+      resolve(base64String);
+    };
+    reader.onerror = (error) => reject(error);
+    reader.readAsBinaryString(file);
+  });
+}
+
+function displayBase64Image(name, base64String, containerId) {
+  const container = document.getElementById(containerId);
+  const imgElem = document.createElement("img");
+  imgElem.src = `data:image/png;base64,${base64String}`;
+  addImageToDom(name, imgElem.src);
+}
+
+let addImageToDom = (name, imageSrc) => {
   let messageWrapper = document.getElementById("messages");
 
   let newMessage = `<div class="message__wrapper">
                         <div class="message__body">
                             <strong class="message__author">${name}</strong>
-                            <p class="message__text__bot">${image.name}</p>
+                            <img src="${imageSrc}" alt="image">
                         </div>
                     </div>`;
 
@@ -236,43 +283,8 @@ let addImageToDom = (image) => {
   let lastMessage = document.querySelector(
     "#messages .message__wrapper:last-child"
   );
+
   if (lastMessage) {
     lastMessage.scrollIntoView();
   }
 };
-
-function handleSendImage(imageFile) {
-  const reader = new FileReader();
-  reader.readAsArrayBuffer(imageFile);
-
-  reader.onload = function () {
-    const imageData = new Uint8Array(reader.result);
-    console.log(imageData);
-    // Send byte array using Agora SDK
-    client.sendCustomReportMessage({
-      event: "custom-report-message",
-      category: "image",
-      reportId: "image",
-      label: "image",
-      data: imageData,
-    });
-  };
-  console.log("Image sent");
-}
-
-// Error in handle receive image
-// Image not reciving
-// calling in room_rtc
-
-// function handleReceiveImage(evt) {
-//   console.log("Image reciving");
-//   if (evt.event === "custom-report-message") {
-//     // Convert byte array back to image
-//     const imageData = new Uint8Array(evt.data);
-//     const blob = new Blob([imageData], { type: "image/jpeg" });
-//     const imageUrl = URL.createObjectURL(blob);
-//     const imageElement = document.createElement("img");
-//     imageElement.src = imageUrl;
-//     console.log("Image received successfully");
-//   }
-// }
