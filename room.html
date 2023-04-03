@@ -131,6 +131,7 @@
                 />
               </svg>
             </button>
+
             <!-- Share meeting dialog -->
             <div class="share-dialog">
               <div class="titleTop">
@@ -147,9 +148,7 @@
               <p id="meeting_name">Meeting Title: SDGP</p>
               <div class="targets"></div>
               <div class="link">
-                <div id="inviteUrl" class="pen-url">
-                  https://codepen.io/ayoisaiah/pen/YbNazJ
-                </div>
+                <div id="inviteUrl" class="pen-url"></div>
                 <button id="copyLink" class="copy-link">Copy ID</button>
               </div>
             </div>
@@ -215,6 +214,7 @@
         <!-- Upload Image -->
         <section id="upload_image">
           <div class="inner">
+            <div id="selectedImageContainer"></div>
             <button id="closeimageattach">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +230,7 @@
               </svg>
             </button>
             <div class="drag-area">
-              <div class="icon">
+              <div class="icon" id="dragIcons">
                 <svg
                   style="color: white"
                   xmlns="http://www.w3.org/2000/svg"
@@ -274,9 +274,9 @@
                   ></line>
                 </svg>
               </div>
-              <header>Drag & Drop to Upload File</header>
-              <span>OR</span>
-              <input type="file" hidden />
+              <header id="dragHeader">Drag & Drop to Upload File</header>
+              <span id="dragSpan">OR</span>
+              <input id="dragInput" type="file" hidden />
             </div>
             <div id="buttonContainer">
               <button id="attachbutton">Browse File</button>
@@ -317,6 +317,13 @@
             <h4>Safe Camera</h4>
             <div class="switch_box box_1">
               <input type="checkbox" class="switch_1" id="safecam_switch" />
+            </div>
+          </div>
+
+          <div class="settings_menu__item">
+            <h4>Safe Messages</h4>
+            <div class="switch_box box_1">
+              <input type="checkbox" class="switch_1" id="safemessage_switch" />
             </div>
           </div>
         </div>

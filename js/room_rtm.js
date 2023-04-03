@@ -186,9 +186,16 @@ dropArea.addEventListener("drop", (event) => {
 
 let selectedImg_src = "";
 
+let selectedImageContainer = document.getElementById("selectedImageContainer");
+let dragIcon = document.getElementById("dragIcons");
+let dragHeading = document.getElementById("dragHeader");
+let dragSpan = document.getElementById("dragSpan");
+
+
 function showFile() {
+  selectedImageContainer.style.display = "block";
   console.log("file shown");
-  let buttonContainer = document.getElementById("buttonContainer");
+
   let fileType = file.type; //getting selected file type
 
   let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
@@ -198,12 +205,17 @@ function showFile() {
       let fileURL = fileReader.result;
       selectedImg_src = fileURL;
       let imgTag = `<img src="${fileURL}" alt="image">`;
-      dropArea.innerHTML = imgTag;
+      selectedImageContainer.innerHTML = imgTag;
     };
     fileReader.readAsDataURL(file);
-    attachbutton.style.transform = "translateY(0px)";
+
+    dragIcon.style.display = "none";
+    dragHeading.style.display = "none";
+    dragSpan.style.display = "none";
+
+    attachbutton.style.transform = "translateY(-30px)";
     sendImageButton.style.display = "block";
-    sendImageButton.style.transform = "translateY(0px)";
+    sendImageButton.style.transform = "translateY(-30px)";
   } else {
     alert("This is not an Image File!");
     dropArea.classList.remove("active");
@@ -213,19 +225,23 @@ function showFile() {
 
 sendImageButton.onclick = () => {
   sendImageHandler();
+  resetDragArea();
+};
 
-  // reset drop area
-  attachButton.style.transform = "translateY(0px)";
-  dropArea.classList.remove("active");
+// Reset Drag Area
+let resetDragArea = () => {
+  dragIcon.style.display = "block";
+  dragHeading.style.display = "block";
+  dragSpan.style.display = "block";
+  selectedImageContainer.innerHTML = "";
+  selectedImageContainer.style.display = "none";
+  sendImageButton.style.display = "none";
 };
 
 // Sending Image
 let sendImageHandler = async () => {
   let image = file;
   upload_image.style.display = "none";
-  // attachbutton.style.transform = "translateY(50px)";
-  // sendImageButton.style.transform = "translateY(50px)";
-  // sendImageButton.style.display = "none";
   handleSendImage(image);
 };
 
