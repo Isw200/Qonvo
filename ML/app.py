@@ -1,34 +1,42 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify
 from keras.models import load_model
-from keras.preprocessing import image
+from PIL import Image, ImageOps
 import numpy as np
 
 app = Flask(__name__)
 
-# Load the Keras model
-model = load_model('myModule.h5')
+# Load the pre-trained Keras model and class names
+model = load_model("keras_model.h5", compile=False)
+class_names = open("labels.txt", "r").readlines()
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/predict', methods=['POST', "GET"])
+@app.route("/predict", methods=["GET", "POST"])
 def predict():
-    # Get the uploaded image data from the request
-    img_file = request.files['image']
-    
-    # Preprocess the image data
-    img = image.load_img(img_file, target_size=(128, 128))
-    img_array = image.img_to_array(img)
-    img_array /= 255.
-    img_array = np.expand_dims(img_array, axis=0)
-    
-    # Use the model to make a prediction
-    prediction = model.predict(img_array)
-    predicted_class = np.argmax(prediction)
-    
-    # Return the prediction as a JSON response
-    return jsonify({'predicted_class': int(predicted_class)})
+    # Get the uploaded image file from the request
+    file = request.files["image"]
 
-if __name__ == '__main__':
+    # Load the image file using PIL
+    image = Image.open(file).convert("RGB")
+
+    # Resize and normalize the image
+    size = (224, 224)
+    image = ImageOps.fit(image, size, Image.LANCZOS)
+    image_array = np.asarray(image)
+    normalized_image_array = (image_array.astype(np.float32) / 127.5) - 1
+
+    # Make a prediction with the model
+    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+    data[0] = normalized_image_array
+    prediction = model.predict(data)
+    index = np.argmax(prediction)
+    class_name = class_names[index]
+    confidence_score = prediction[0][index]
+
+    # Return the predicted class name and confidence score as a JSON response
+    response = {
+        "class_name": class_name[2:],
+        "confidence_score": float(confidence_score)
+    }
+    return jsonify(response)
+
+if __name__ == "__main__":
     app.run(debug=True)
