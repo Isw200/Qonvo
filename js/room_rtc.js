@@ -280,10 +280,6 @@ async function initModel() {
   const modelURL = URL + "model.json";
   const metadataURL = URL + "metadata.json";
 
-  // load the model and metadata
-  // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-  // Note: the pose library adds a tmPose object to your window (window.tmPose)
-
   if (!model) {
     document.getElementById("loading_model").style.display = "block";
   }
@@ -299,34 +295,29 @@ async function initModel() {
 
   // Convenience function to set up a webcam
   const size = 200;
-  const flip = true; // whether to flip the webcam
-  webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+  const flip = true;
+  webcam = new tmPose.Webcam(size, size, flip); 
   console.log(webcam);
-  await webcam.setup(); // request access to the webcam
+  // request access to the webcam
+  await webcam.setup(); 
   await webcam.play();
   if (!safe_mode) {
     webcam.pause();
   }
   await loop();
-  // append/get elements to the DOM
-  // const canvas = document.getElementById("canvas");
-  // canvas.width = size;
-  // canvas.height = size;
-  // ctx = canvas.getContext("2d");
 }
 
 async function loop(timestamp) {
   is_model_loaded = true;
-  webcam.update(); // update the webcam frame
+  // update the webcam frame
+  webcam.update();
   await predict();
   await loop();
 }
 
 async function predict() {
-  // Prediction #1: run input through posenet
-  // estimatePose can take in an image, video or canvas html element
   const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-  // Prediction 2: run input through teachable machine classification model
+  
   const prediction = await model.predict(posenetOutput);
 
   for (let i = 0; i < maxPredictions; i++) {

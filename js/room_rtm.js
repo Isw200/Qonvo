@@ -51,12 +51,10 @@ let getMembers = async () => {
 // Messages
 let handleChannelMessage = async (message, memberId) => {
   let data = JSON.parse(message.text);
-  console.log("received message: ");
 
   if (data.type === "chat") {
     addMessageToDom(data.displayName, data.message);
   } else if (data.type === "image") {
-    console.log("Image reciving");
     createImage(data);
   }
 };
