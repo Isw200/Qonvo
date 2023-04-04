@@ -113,10 +113,10 @@ const closeButton = document.querySelector(".close-button");
 shareButton.addEventListener("click", (event) => {
   if (navigator.share) {
     navigator
-      .share({
-        title: "WebShare API Demo",
-        url: "https://codepen.io/ayoisaiah/pen/YbNazJ",
-      })
+      // .share({
+      //   title: "WebShare API Demo",
+      //   url: "https://codepen.io/ayoisaiah/pen/YbNazJ",
+      // })
       .then(() => {
         console.log("Thanks for sharing!");
       })
@@ -158,17 +158,32 @@ copyLink.addEventListener("click", (event) => {
   }, 3000);
 });
 
-// // Select image
-const selectImage = document.getElementById("selectImage");
-selectImage.addEventListener("click", (e) => {
-  e.preventDefault();
-  document.getElementById("imageInput").click();
+// // // Select image
+// const selectImage = document.getElementById("selectImage");
+// selectImage.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   document.getElementById("imageInput").click();
+// });
+
+// const imageInput = document.getElementById("imageInput");
+// imageInput.addEventListener("change", handleImageUpload);
+
+// function handleImageUpload(event) {
+//   const file = event.target.files[0];
+//   // Perform image upload logic here
+// }
+
+// settings popup
+const settingsButton = document.getElementById("test-button");
+const settingsDialog = document.getElementById("settings_menu");
+const closeSettingsButton = document.getElementById("settings_close-button");
+
+settingsButton.addEventListener("click", (event) => {
+  settingsDialog.style.display = "block";
+  console.log("clicked");
 });
 
-const imageInput = document.getElementById("imageInput");
-imageInput.addEventListener("change", handleImageUpload);
-
-function handleImageUpload(event) {
-  const file = event.target.files[0];
-  // Perform image upload logic here
-}
+closeSettingsButton.addEventListener("click", (event) => {
+  console.log("closed");
+  settingsDialog.style.display = "none";
+});

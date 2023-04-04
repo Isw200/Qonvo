@@ -131,6 +131,7 @@
                 />
               </svg>
             </button>
+
             <!-- Share meeting dialog -->
             <div class="share-dialog">
               <div class="titleTop">
@@ -147,9 +148,7 @@
               <p id="meeting_name">Meeting Title: SDGP</p>
               <div class="targets"></div>
               <div class="link">
-                <div id="inviteUrl" class="pen-url">
-                  https://codepen.io/ayoisaiah/pen/YbNazJ
-                </div>
+                <div id="inviteUrl" class="pen-url"></div>
                 <button id="copyLink" class="copy-link">Copy ID</button>
               </div>
             </div>
@@ -173,7 +172,9 @@
                 />
               </svg>
             </button>
-            <button id="test-button">T</button>
+            <button id="test-button">
+              <img src="images/setting.png" alt="settings icon" />
+            </button>
           </div>
         </section>
 
@@ -193,18 +194,152 @@
                 placeholder="Send a message...."
               />
             </form>
-            <!-- <input type="file" id="imageInput" style="display: none" />
-            <button id="selectImage">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path
-                  d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
-                />
+            <button id="attach_image">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                viewBox="0 0 24 24"
+              >
+                <g>
+                  <path fill="none" d="M0 0h24v24H0z" />
+                  <path
+                    d="M14.828 7.757l-5.656 5.657a1 1 0 1 0 1.414 1.414l5.657-5.656A3 3 0 1 0 12 4.929l-5.657 5.657a5 5 0 1 0 7.071 7.07L19.071 12l1.414 1.414-5.657 5.657a7 7 0 1 1-9.9-9.9l5.658-5.656a5 5 0 0 1 7.07 7.07L12 16.244A3 3 0 1 1 7.757 12l5.657-5.657 1.414 1.414z"
+                  />
+                </g>
               </svg>
-            </button> -->
+            </button>
+          </div>
+        </section>
+
+        <!-- Upload Image -->
+        <section id="upload_image">
+          <div class="inner">
+            <div id="selectedImageContainer"></div>
+            <button id="closeimageattach">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="56"
+                fill="currentColor"
+                class="bi bi-x"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  fill="white"
+                ></path>
+              </svg>
+            </button>
+            <div class="drag-area">
+              <div class="icon" id="dragIcons">
+                <svg
+                  style="color: white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="82"
+                  viewBox="0 0 512 512"
+                >
+                  <title>ionicons-v5-f</title>
+                  <path
+                    d="M320,367.79h76c55,0,100-29.21,100-83.6s-53-81.47-96-83.6c-8.89-85.06-71-136.8-144-136.8-69,0-113.44,45.79-128,91.2-60,5.7-112,43.88-112,106.4s54,106.4,120,106.4h56"
+                    style="
+                      fill: none;
+                      stroke: #fffafa;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                    fill="white"
+                  ></path>
+                  <polyline
+                    points="320 255.79 256 191.79 192 255.79"
+                    style="
+                      fill: none;
+                      stroke: #ffffff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                  ></polyline>
+                  <line
+                    x1="256"
+                    y1="448.21"
+                    x2="256"
+                    y2="207.79"
+                    style="
+                      fill: none;
+                      stroke: #ffffff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 32px;
+                    "
+                  ></line>
+                </svg>
+              </div>
+              <header id="dragHeader">Drag & Drop to Upload File</header>
+              <span id="dragSpan">OR</span>
+              <input id="dragInput" type="file" hidden />
+            </div>
+            <div id="buttonContainer">
+              <button id="attachbutton">Browse File</button>
+              <button id="sendimagebutton">SEND</button>
+            </div>
           </div>
         </section>
       </div>
     </main>
+
+    <section id="settings_menu">
+      <div class="settings_menu__container">
+        <div class="settings_menu__header">
+          <h3>Settings</h3>
+          <button class="close-button" id="settings_close-button">
+            <svg viewBox="0 0 10 10" width="20" height="20">
+              <line
+                x1="1"
+                y1="1"
+                x2="9"
+                y2="9"
+                stroke="black"
+                stroke-width="2"
+              />
+              <line
+                x1="1"
+                y1="9"
+                x2="9"
+                y2="1"
+                stroke="black"
+                stroke-width="2"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="settings_menu__body">
+          <div class="settings_menu__item">
+            <h4>Safe Camera</h4>
+            <div class="switch_box box_1">
+              <input type="checkbox" class="switch_1" id="safecam_switch" />
+            </div>
+          </div>
+
+          <div class="settings_menu__item">
+            <h4>Safe Messages</h4>
+            <div class="switch_box box_1">
+              <input type="checkbox" class="switch_1" id="safemessage_switch" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loading_model">
+      <div class="load-wrapp">
+        <div class="load-2">
+          <p>Loading...</p>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </section>
   </body>
   <script type="text/javascript" src="js/AgoraRTC_N-4.16.1.js"></script>
   <script type="text/javascript" src="js/agora-rtm-sdk-1.5.1.js"></script>
