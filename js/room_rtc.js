@@ -2,6 +2,7 @@ const APP_ID = "c39e86d887ac4d71a81cf751f29cbe9d";
 
 // UID is a random number generated for the client
 let uid = sessionStorage.getItem("uid");
+
 if (!uid) {
   uid = String(Math.floor(Math.random() * 10000));
   sessionStorage.setItem("uid", uid);
@@ -45,12 +46,6 @@ let joinRoomInit = async () => {
   channel.on("MemberJoined", handleMemberJoined);
   channel.on("MemberLeft", handleMemberLeft);
   channel.on("ChannelMessage", handleChannelMessage);
-
-  //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-  //___________________________________________________________error in this line
-  // channel.on("custom-report-message-received", handleReceiveImage);
-  //###############################################################
-  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
   getMembers();
   addBotMessageToDom(`${displayName} joined the room`);
