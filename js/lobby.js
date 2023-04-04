@@ -15,7 +15,7 @@ form.addEventListener("submit", (e) => {
   let date = new Date();
   let inviteCode = String(Math.floor(Math.random() * 10000));
 
-  window.location = `room.html?room=${inviteCode}`;
+  window.location = `room.html?room=${inviteCode}%${meetingTitle}%Qonvo%Meet`;
 });
 
 // Join a room

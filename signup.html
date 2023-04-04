@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Qonvo SignUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/lobby.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/navbar.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/signup.css"/>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="js/form.js"></script>
+    
+  </head>
+  <body>
+    <!-- navigation bar -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar__container">
+        <a href="#" class="navbar__logo">
+          <img src="images/Qonvo-logo.png" alt="" srcset="">
+          <h2>Qonvo</h2>
+        </a>
+        <div class="cl-effect-5">
+          <a href="lobby.html"><span data-hover="Home">Home</span></a>
+          <a href="lobby.html"><span data-hover="Meeting">Meeting</span></a>
+          <a href="#"><span data-hover="Pricing">Pricing</span></a>
+          <a href="#"><span data-hover="Contact">Contact</span></a>
+        </div>
+
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span> <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <main id="room__lobby__container">
+      <div id="lobby_left">
+        <div id="lobby__left__header">
+          <h2>Welcome to</h2>
+          <h1>Qonvo</h1>
+        </div>
+
+        <div id="lobby__left__body">
+          <p>
+            Streamline your meetings with our platform application. Effortlessly schedule, host and attend meetings from anywhere, using any device. Experience the difference in your work life.
+          </p>
+        </div>
+      </div>
+
+      <!-- signup form -->
+      <div id="lobby_right">
+        <p class="welcome"> Register your account</p>
+          <label class="username" for="">User name</label>
+          <input type="text" id="username" name="username" placeholder="Create a user name (only letters and numbers)" Required>
+          <br>
+          <label class="fname" for="">First name</label>
+          <input type="text" id="fname" name="fname" placeholder="Enter your First Name" Required>
+          <br>
+          <label class="lname" for="">Last name</label>
+          <input type="text" id="lname" name="lname" placeholder="Enter your Last name" Required>
+          <br>
+          <label class="email"  for="">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your valid Email" Required>
+          <br>
+          <label class="pass1"  for="">Password</label>
+          <input type="password" id="pass1" name="pass1" placeholder="Enter a password" Required>
+          <br>
+          <label class="pass2"  for="">Confirm Password</label>
+          <input type="password" id="pass2" name="pass2" placeholder="Enter Confirm Password" Required>
+          <br>
+          <label class="profile"  for="">Select profile Picture</label>
+          <input type="file" id="fileUpload" />
+          <button class="but" onclick="uploadImage(),signUp(),save()" type="submit">sign up</button>
+          
+      </div>
+    </main>
+  </body>
+  <script type="text/javascript" src="js/contentSwitcher.js"></script>
+  <script type="text/javascript" src="js/lobby.js"></script>
+</html>
