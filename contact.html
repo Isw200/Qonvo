@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles/contact.css" />
+    <link rel="icon" href="images/Qonvo-logo.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="js/form.js"></script>
+  </head>
+  <body>
+    <div id="nav">
+      <nav class="navbar" id="navbar">
+        <div class="navbar__container">
+          <a href="#" class="navbar__logo">
+            <img src="images/Qonvo-logo.png" alt="" srcset="" />
+            <h2>Qonvo</h2>
+          </a>
+
+          <div class="cl-effect-5">
+            <a href="index.html"><span data-hover="Home">Home</span></a>
+            <a href="lobby.html"><span data-hover="Meeting">Meeting</span></a>
+            <a href="pricing.html"><span data-hover="Pricing">Pricing</span></a>
+            <a href="contact.html" class="active_nav"
+              ><span data-hover="Contact">Contact</span></a
+            >
+          </div>
+
+          <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+
+          <div class="user">
+            <div class="user_icon" href="">
+              <div id="image-container"></div>
+            </div>
+            <div class="user_name">
+              <h4><span id="myobj2"></span></h4>
+            <p><span id="myobj"></span></p>
+            </div>
+            <div id="button-container"></div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <section>
+      <div class="container">
+        <div class="content">
+          <div class="left-side">
+            <div class="address details">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="topic">Address</div>
+              <div class="text-one">No Number</div>
+              <div class="text-two">Bambalapitiya</div>
+            </div>
+            <div class="phone details">
+              <i class="fas fa-phone-alt"></i>
+              <div class="topic">Phone</div>
+              <div class="text-one">119</div>
+              <div class="text-two">1989</div>
+            </div>
+            <div class="email details">
+              <i class="fas fa-envelope"></i>
+              <div class="topic">Email</div>
+              <div class="text-one">qonvosupport@gmail.com</div>
+              <div class="text-two">info.qonvosupport@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="right-side">
+            <br /><br /><br /><br /><br /><br />
+            <div class="topic-text">Send us a message</div>
+            <p>
+              Qonvo keeps you and your team connected wherever you are, so you
+              can get more done, together.Fill out the form to get in touch with
+              one of our representatives.
+            </p>
+            <form action="#">
+              <div class="input-box">
+                <input type="text" placeholder="Enter your name" />
+              </div>
+              <div class="input-box">
+                <input type="text" placeholder="Enter your email" />
+              </div>
+              <div class="input-box">
+                <input type="text" placeholder="Enter your messege" />
+              </div>
+              <div class="input-box message-box"></div>
+              <div class="button">
+                <input type="button" value="Send Now" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer -->
+    <section id="footer">
+      <img src="images/footer-img.png" class="footer-img" />
+      <div class="title-text">
+        <p>Contact</p>
+        <h1>Visit Our Website</h1>
+      </div>
+
+      <div class="footer-row">
+        <div class="footer-left">
+          <h1>About Us</h1>
+          <p>Customers</p>
+          <p>Our Team</p>
+          <p>Careers</p>
+          <p>Partners</p>
+          <p>Developer Platform</p>
+        </div>
+        <div class="footer-right">
+          <h1>Get in touch with us</h1>
+          <p>
+            <i class="fa fa-map-marker"></i>57,Ramakrishna Rd ,<br />Colombo 6,
+            Srilanka
+          </p>
+          <p><i class="fa fa-paper-plane"></i> qonvosupport@gmail.com</p>
+          <p><i class="fa fa-phone"></i>0774887051</p>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <p>
+          Copyright 2023,Team Greengust | Terms | Privacy | Trust Center | Legal
+          & Compliance | Cookie Preferences
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

@@ -103,6 +103,17 @@
   border-radius: 20px;
   margin-right: 10px;
 }
+#messages__container #attach_image {
+  border: none;
+  background-color: #26212135;
+  border-radius: 100px;
+  height: 4em;
+  margin: 1em 1em 1em 0;
+}
+#messages__container #attach_image:hover {
+  background-color: #1b9780;
+  color: #fff;
+}
 
 #messages {
   width: 100%;
@@ -118,6 +129,10 @@
   display: flex;
   gap: 10px;
   margin: 1em;
+}
+.message__wrapper img {
+  width: 24em;
+  height: 13em;
 }
 
 .message__body {
@@ -152,13 +167,15 @@
 .message__text {
   margin: 0;
 }
-
+#licenceDetectedText {
+  transform: translateY(-30px);
+  display: none;
+}
 #message__form {
   width: 23.2rem;
-  position: fixed;
+  /* position: fixed; */
   bottom: 10px;
   display: block;
-  background-color: #c7c7c7;
   padding: 1em;
   border-radius: 0 0 20px 20px;
 }
@@ -188,12 +205,25 @@
   font-size: 1.5rem;
   display: none;
 }
+#closeMessages img{
+  width: 20px;
+}
 @media (max-width: 768px) {
   #closeMessages {
     display: block;
   }
+  #messages__container {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    margin-right: 0;
+  }
+  #message__form {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
 }
-
 
 /* Streem Container View */
 #stream__container {
@@ -354,11 +384,13 @@
 @media (max-width: 768px) {
   .stream__actions {
     width: 90%;
+    gap: 0.5rem;
+    overflow-x: auto;
   }
   .stream__actions a,
   .stream__actions button {
-    width: 43px;
-    height: 43px;
+    width: 53px;
+    height: 53px;
   }
 }
 
@@ -407,16 +439,12 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-
-  /* transform: translate(-50%, -50%); */
-}
-
-.share-dialog {
+  z-index: 99999;
+  transform: translate(-50%, -50%);
   display: none;
   width: 95%;
   max-width: 500px;
-  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.096);
-  z-index: -1;
+  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.128);
   padding: 20px;
   border-radius: 4px;
   background-color: #fff;
@@ -548,4 +576,328 @@
     bottom: 0;
     opacity: 0;
   }
+}
+
+/* Settings */
+#test-button img {
+  width: 20px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#settings_menu {
+  position: absolute;
+  bottom: 12%;
+  right: 30%;
+  width: 18%;
+  height: 17%;
+  background-color: #ffffff80;
+  z-index: 10000;
+  display: none;
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+#settings_menu .settings_menu__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#settings_menu .settings_menu__header button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #000;
+}
+#settings_menu .settings_menu__header button:hover line {
+  stroke: #1b9780;
+}
+
+#settings_menu .settings_menu__header h3 {
+  font-size: 1.2rem;
+  margin: 0%;
+  color: #10473d;
+}
+
+#settings_menu .settings_menu__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#settings_menu .settings_menu__item h4 {
+  font-size: 1rem;
+  font-weight: 200;
+  margin: 0%;
+  color: #10473d;
+}
+@media (max-width: 768px) {
+  #settings_menu {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+  #settings_menu .settings_menu__header {
+    margin-bottom: 0;
+  }
+  #settings_menu .settings_menu__header h3 {
+    font-size: 1.5rem;
+  }
+  #settings_menu .settings_menu__item {
+    margin-bottom: 0;
+  }
+  #settings_menu .settings_menu__item h4 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Switch  */
+#settings_menu input[type="checkbox"].switch_1 {
+  font-size: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 3em;
+  height: 1.5em;
+  background: #ddd;
+  border-radius: 3em;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+#settings_menu input[type="checkbox"].switch_1:checked {
+  background: #1b9780;
+}
+
+#settings_menu input[type="checkbox"].switch_1:after {
+  position: absolute;
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  left: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+#settings_menu input[type="checkbox"].switch_1:checked:after {
+  left: calc(100% - 1.5em);
+}
+
+/* ********************
+MODEL LOADING 
+**********************/
+#loading_model {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #00000080;
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+}
+.load-wrapp {
+  width: 100px;
+  height: 100px;
+  margin: 20% auto;
+  padding: 20px 20px 20px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #d8d8d884;
+}
+
+.line {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background-color: #1b9780;
+}
+
+.load-2 .line:nth-last-child(1) {
+  animation: loadingB 1.5s 1s infinite;
+}
+.load-2 .line:nth-last-child(2) {
+  animation: loadingB 1.5s 0.5s infinite;
+}
+.load-2 .line:nth-last-child(3) {
+  animation: loadingB 1.5s 0s infinite;
+}
+
+@keyframes loadingB {
+  0% {
+    width: 15px;
+  }
+  50% {
+    width: 35px;
+  }
+  100% {
+    width: 15px;
+  }
+}
+
+/* 
+Image upload 
+*/
+.messageAndMedia {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  background-color: #c7c7c7;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.messageAndMedia #message__form {
+  width: 80%;
+}
+#image_form {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#image_form button {
+  border-radius: 10px;
+  border: 0;
+  background-color: #1b9780;
+  color: #fff;
+  padding: 8px 8px 2px 8px;
+  cursor: pointer;
+}
+
+#upload_image {
+  position: fixed;
+  z-index: 1000000;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  top: 0;
+  display: none;
+  transition: all 0.4s ease-in-out;
+}
+
+#upload_image .inner {
+  background: #1b9780a5;
+  width: 50%;
+  height: 40em;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 #00000036;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#upload_image .inner #closeimageattach {
+  position: absolute;
+  font-size: 2em;
+  cursor: pointer;
+  border: none;
+  margin-left: 26.5em;
+  margin-top: 0.5em;
+  transition: all 0.1s ease-in-out;
+  background-color: #1b9780b9;
+  border-radius: 100%;
+  display: flex;
+  width: 2em;
+  height: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+#upload_image .inner #closeimageattach:hover {
+  background-color: #971b1b;
+}
+
+.drag-area {
+  width: 100%;
+  height: 80%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.drag-area .icon {
+  color: #fff;
+}
+.drag-area header {
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 0 10px #00000036;
+}
+.drag-area span {
+  font-size: 25px;
+  font-weight: 500;
+  color: #fff;
+  margin: 10px 0 15px 0;
+}
+#upload_image #attachbutton {
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #10473d;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: translateY(-50px);
+  transition: all 0.3s ease-in-out;
+}
+.drag-area img {
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #00000036;
+}
+#buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+
+#upload_image #sendimagebutton {
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #10473d;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: translateY(-50px);
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+#upload_image #selectedImageContainer {
+  display: none;
+  width: 70%;
+  height: 70%;
+  margin-top: 1em;
+}
+
+#upload_image #selectedImageContainer img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
 }

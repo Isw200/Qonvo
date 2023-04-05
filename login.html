@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" media="screen"href="styles/navbar.css"/>
     <link rel="stylesheet" href="styles/login.css"/>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
     <script src="js/form.js"></script>
     <title>Qonvo Login</title>
 </head>
@@ -22,10 +24,10 @@
             <h2>Qonvo</h2>
           </a>
           <div class="cl-effect-5">
-            <a href="lobby.html"><span data-hover="Home">Home</span></a>
-            <a href="lobby.html"><span data-hover="Meeting">Meeting</span></a>
-            <a href="#"><span data-hover="Pricing">Pricing</span></a>
-            <a href="#"><span data-hover="Contact">Contact</span></a>
+            <a href="index.html"><span data-hover="Home">Home</span></a>
+          <a href="lobby.html"><span data-hover="Meeting">Meeting</span></a>
+          <a href="pricing.html"><span data-hover="Pricing">Pricing</span></a>
+          <a href="contact.html"><span data-hover="Contact">Contact</span></a>
           </div>
   
           <div class="navbar__toggle" id="mobile-menu">
@@ -50,13 +52,14 @@
         <!-- Login form -->
       <div id="lobby_right">
           <p class="welcome"> Welcome Back</p>
-          <label class="name" for="">Email</label>
-          <input type="email" placeholder="email here" id="email"><br>
-          <label class="password" for="">Password</label>
+
+          <input type="text" id="username" name="username" placeholder="Enter user name"><br>
+
           <input type="password" placeholder="password here" id="password"><br>
-          <button onclick="signIn()" id="signIp" class="but">SignIn</button>
+          <button onclick="signIn()" id="signIp" class="but">Sign In</button>
+          <label class="link">No account ?<a href="signup.html">Sign Up</a></label>
       </div>
     </main>
-
+    
 </body>
 </html>

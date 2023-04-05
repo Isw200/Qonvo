@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Room</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/Qonvo-logo.png" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -31,6 +32,23 @@
   </head>
   <body>
     <!-- navigation bar -->
+    <div id="mobileNavToggle">
+      <img src="images/menu.png" alt="">
+    </div>
+    <div class="mobiNav" id="mobiNav">
+      <div class="mobiNav__container">
+        <div class="mobiNav__close" id="close__menu">
+          <img src="images/close.png" alt="">
+        </div>
+      </div>
+      <div class="mobiNav__links">
+        <a href="index.html">Home</a>
+        <a href="lobby.html">Meeting</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
     <nav class="navbar" id="navbar">
       <div class="navbar__container">
         <a href="#" class="navbar__logo">
@@ -38,10 +56,10 @@
           <h2>Qonvo</h2>
         </a>
         <div class="cl-effect-5">
-          <a href="#"><span data-hover="Home">Home</span></a>
-          <a href="#"><span data-hover="Meeting">Meeting</span></a>
-          <a href="#"><span data-hover="Pricing">Pricing</span></a>
-          <a href="#"><span data-hover="Contact">Contact</span></a>
+          <a href="index.html"><span data-hover="Home">Home</span></a>
+          <a href="lobby.html" class="active_nav"><span data-hover="Meeting">Meeting</span></a>
+          <a href="pricing.html"><span data-hover="Pricing">Pricing</span></a>
+          <a href="contact.html"><span data-hover="Contact">Contact</span></a>
         </div>
 
         <div class="navbar__toggle" id="mobile-menu">
@@ -51,25 +69,14 @@
 
         <div class="user">
           <div class="user_icon" href="">
-            <img id="profile-pic" />
-            <script>
-              firebase.auth().onAuthStateChanged((user)=>{
-                var email = user.email;
-                var profilePicRef = firebase.storage().ref().child(email+'.jpg');
-                profilePicRef.getDownloadURL().then(function(url) {
-                  var profilePicImg = document.getElementById('profile-pic');
-                  profilePicImg.src = url;
-                }).catch(function(error) {
-                  console.error(error);
-                });
-              })
-            </script>
+            <div id="image-container"></div>
           </div>
           <div class="user_name">
-            <h4><span id="myobj"></span></h4>
+            <h4><span id="myobj2"></span></h4>
+            <p><span id="myobj"></span></p>
           </div>
         </div>
-       
+        <div id="button-container"></div>
       </div>
     </nav>
 
@@ -105,7 +112,7 @@
                     name="name"
                     required
                     placeholder="Enter your display name..."
-                  />
+                    />
                 </div>
                 <div class="form__field__wrapper">
                   <p>Meeting Title</p>
@@ -185,13 +192,8 @@
         </div>
       </div>
     </main>
-    <button onclick="signOut()">sign out</button>
-    <script>
-      var myobj=localStorage.getItem('myobj');
-      document.getElementById('myobj').textContent=myobj;
-     
-    </script>
   </body>
   <script type="text/javascript" src="js/contentSwitcher.js"></script>
   <script type="text/javascript" src="js/lobby.js"></script>
+  <script type="text/javascript" src="js/nav.js"></script>
 </html>

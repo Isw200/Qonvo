@@ -1,0 +1,344 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.1),#249782);
+}
+.container h2{
+    color: #8b8b8b;
+    font-size: 32px;
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* nav starts here */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    z-index: 999;
+    box-shadow: 0 0 5px #0000001c;
+    transition: all 0.3s;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar li {
+    width: 100px;
+    text-align: center;
+  }
+  
+  .navbar a {
+    color: #a5a5a5;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .navbar__toggle {
+    display: none;
+  }
+  
+  .navbar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .navbar__logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: "Arizonia", cursive;
+    display: flex;
+  }
+  
+  .navbar__logo img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .navbar__logo h2 {
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    padding-top: 4px;
+  }
+  
+  /* nav item animations */
+  .cl-effect-5 a {
+    position: relative;
+    display: inline-block;
+    margin: 25px 15px;
+    outline: none;
+    color: #8f8f8f;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 100;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+  }
+  
+  nav a:hover,
+  nav a:focus {
+    outline: none;
+  }
+  
+  .cl-effect-5 a {
+    overflow: hidden;
+    padding: 0 4px;
+  }
+  
+  .cl-effect-5 a span {
+    position: relative;
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+  }
+  
+  .cl-effect-5 a span::before {
+    position: absolute;
+    top: 100%;
+    content: attr(data-hover);
+    font-weight: 700;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .cl-effect-5 a:hover span,
+  .cl-effect-5 a:focus span {
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  .navbar .active_nav {
+    font-weight: 800;
+    border-bottom: 2px solid #a5a5a5;
+  }
+  
+  /* User profile */
+   .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user_icon {
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+  }
+  .user_icon img {
+    width: 100%;
+    display: block;
+  }
+  .user_name {
+    line-height: 0;
+    margin-bottom: 10px;
+  }
+  
+  .user_name h4 {
+    padding-top: -5px;
+    font-size: 1.2rem;
+  }
+  
+  .user .user_name p {
+    padding-top: 20px;
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 720px) {
+      .user_name{
+          display: none;
+      }
+  }
+  
+  /* navigation bar animation */
+  .nav-up {
+    top: -70px;
+  }
+  
+/* nav ends here */
+
+.price-row{
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-gap: 25px;
+}
+.price-col{
+    background: #152421;
+    border-radius: 10px;
+    padding: 10% 15%;
+    text-align: center;
+    color: #fff;
+}
+
+.price-col p{
+    font-size: 22px;
+}
+
+.price-col h3{
+    font-size: 44px;
+    font-weight: 500;
+    margin: 20px 0 40px;
+}
+
+.price-col span{
+    font-size: 18px;
+}
+
+.price-col ul{
+    text-align: left;
+    margin: 20px 0;
+    color: #ddd;
+    list-style: none;
+}
+.price-col ul li{
+    margin:15px 0;
+}
+.price-col ul li::before{
+    content: '\2022';
+    color: #249782;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.price-col button{
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #249782;
+    border-radius: 6px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.price-col button:hover{
+    background: #249782;
+}
+
+/* footer */
+#footer{
+    padding: 100px 0 20px;
+    background: #efefef;
+    position: relative;
+}
+
+.footer-row{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-left,.footer-right{
+    flex-basis: 45%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.footer-right{
+    text-align: right;
+}
+.footer-row h1{
+    margin: 10px 0;
+}
+.footer-row p{
+    line-height: 35px;
+}
+.footer-left .fa,.footer-right .fa{
+    font-size: 20px;
+    color: #009688;
+    margin-right: 10px;
+}
+.footer-img{
+    max-width: 370px;
+    opacity: 0.1;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translateX(-50%);
+}
+
+.social-links{
+    text-align: center;
+}
+
+.social-links .fa-brands{
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    border: 1px solid #009688;
+    margin: 40px 5px 0;
+    color: #009688;
+    cursor: pointer;
+}
+
+.social-links p{
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.title-text{
+  text-align: center;
+  padding-bottom: 70px;
+}
+.title-text p{
+      margin: auto;
+      font-size: 20px;
+      color: #249782;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+  }
+  /* .title-text p::after{
+      content: "";
+      width: 50%;
+      height: 35px;
+      background: linear-gradient(#249782,#fff);
+      position: absolute;
+      top: -20px;
+      left: 0;
+      z-index: -1;
+      transform:rotate(10deg);
+      border-top-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+  } */
+.title-text h1{
+      font-size: 50px;
+  }
+.feature-box{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+}
