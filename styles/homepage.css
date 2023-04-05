@@ -4,7 +4,7 @@
     font-family: 'Poppins', sans-serif;   
 }
 #banner{
-    background: linear-gradient(rgba(0,0,0,0.1),#249782),url("images/banner.jpg");
+    background: linear-gradient(rgba(0,0,0,0.1),#249782),url("../images/banner.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -247,7 +247,7 @@
         z-index: 1;
         display: inline-block;
     }
-    .title-text p::after{
+    /* .title-text p::after{
         content: "";
         width: 50%;
         height: 35px;
@@ -259,7 +259,7 @@
         transform:rotate(10deg);
         border-top-left-radius: 35px;
         border-bottom-right-radius: 35px;
-    }
+    } */
 .title-text h1{
         font-size: 50px;
     }
