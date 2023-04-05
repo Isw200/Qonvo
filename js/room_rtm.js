@@ -183,6 +183,23 @@ dropArea.addEventListener("drop", (event) => {
   beforePredictImage(file);
 });
 
+//----------------------------------------------- Safe massagin mode--------------------------------------------------------
+// Turn on Safe Mode
+let safe_message_switch = document.getElementById("safemessage_switch");
+
+let safe_message_mode = false;
+
+// Turn on Safe Mode check
+safe_message_switch.addEventListener("click", async () => {
+  if (safe_message_switch.checked) {
+    console.log("Safe message Mode On");
+    safe_message_mode = true;
+  } else {
+    console.log("Safe message Mode Off");
+    safe_message_mode = false;
+  }
+});
+
 const OBJ_MDL_URL = "https://teachablemachine.withgoogle.com/models/3K2rCwpAX/";
 let objectModel, objectModelMaxPredictions;
 let imageForCanvas, canvas;
@@ -199,8 +216,11 @@ function beforePredictImage(file) {
   };
 
   console.log("Image loaded");
-  // showFile();
-  initObjModel();
+  showFile();
+  if (safe_message_mode) {
+    document.getElementById("licenceDetectedText").style.display = "block";
+    initObjModel();
+  }
 }
 
 // Object detection model
@@ -214,7 +234,7 @@ async function initObjModel() {
 
   await predictImage();
 }
-
+let isLicenceDetected = false;
 // run the webcam image through the image objectModel
 async function predictImage() {
   // predict can take in an image, video or canvas html element
@@ -223,8 +243,25 @@ async function predictImage() {
     const classPrediction =
       prediction[i].className + ": " + prediction[i].probability.toFixed(2);
     console.log(classPrediction);
+
+    if (
+      prediction[i].className === "licence" &&
+      prediction[i].probability > 0.8
+    ) {
+      isLicenceDetected = true;
+    }
+  }
+  document.getElementById("licenceDetectedText").style.display = "block";
+  if (isLicenceDetected) {
+    document.getElementById("licenceDetectedText").innerHTML =
+      "Licence Detected";
+  } else {
+    document.getElementById("licenceDetectedText").innerHTML =
+      "No issue, Send the image";
   }
 }
+
+//-----------------------------------------------End of safe massagin mode--------------------------------------------------------
 
 let selectedImg_src = "";
 
@@ -234,6 +271,11 @@ let dragHeading = document.getElementById("dragHeader");
 let dragSpan = document.getElementById("dragSpan");
 
 function showFile() {
+  if (safe_message_mode) {
+    document.getElementById("licenceDetectedText").innerHTML =
+    "Please wait, we are checking the image...";
+  }
+  
   selectedImageContainer.style.display = "block";
   console.log("file shown");
 

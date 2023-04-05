@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Room</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/Qonvo-logo.png" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -26,6 +27,23 @@
   </head>
   <body>
     <!-- navigation bar -->
+    <div id="mobileNavToggle">
+      <img src="images/menu.png" alt="">
+    </div>
+    <div class="mobiNav" id="mobiNav">
+      <div class="mobiNav__container">
+        <div class="mobiNav__close" id="close__menu">
+          <img src="images/close.png" alt="">
+        </div>
+      </div>
+      <div class="mobiNav__links">
+        <a href="index.html">Home</a>
+        <a href="lobby.html">Meeting</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
     <nav class="navbar" id="navbar">
       <div class="navbar__container">
         <a href="#" class="navbar__logo">
@@ -33,10 +51,10 @@
           <h2>Qonvo</h2>
         </a>
         <div class="cl-effect-5">
-          <a href="#"><span data-hover="Home">Home</span></a>
-          <a href="#"><span data-hover="Meeting">Meeting</span></a>
-          <a href="#"><span data-hover="Pricing">Pricing</span></a>
-          <a href="#"><span data-hover="Contact">Contact</span></a>
+          <a href="index.html"><span data-hover="Home">Home</span></a>
+          <a href="lobby.html" class="active_nav"><span data-hover="Meeting">Meeting</span></a>
+          <a href="pricing.html"><span data-hover="Pricing">Pricing</span></a>
+          <a href="contact.html"><span data-hover="Contact">Contact</span></a>
         </div>
 
         <div class="navbar__toggle" id="mobile-menu">
@@ -172,4 +190,5 @@
   </body>
   <script type="text/javascript" src="js/contentSwitcher.js"></script>
   <script type="text/javascript" src="js/lobby.js"></script>
+  <script type="text/javascript" src="js/nav.js"></script>
 </html>

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Room</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/Qonvo-logo.png" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -183,7 +184,9 @@
 
         <!-- Messages -->
         <section id="messages__container">
-          <i id="closeMessages" class="fa-solid fa-xmark"></i>
+          <div id="closeMessages">
+            <img src="images/close.png" alt="">
+          </div>
           <div id="messages"></div>
 
           <div class="messageAndMedia">
@@ -278,6 +281,7 @@
               <span id="dragSpan">OR</span>
               <input id="dragInput" type="file" hidden />
             </div>
+            <h3 id="licenceDetectedText">Licence Deteced</h3>
             <div id="buttonContainer">
               <button id="attachbutton">Browse File</button>
               <button id="sendimagebutton">SEND</button>
