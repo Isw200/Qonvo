@@ -276,13 +276,8 @@ const URL = "https://teachablemachine.withgoogle.com/models/UnD9KdVhZ/";
 let model, webcam, ctx, maxPredictions;
 
 async function initModel() {
-  console.log("Initializing");
   const modelURL = URL + "model.json";
   const metadataURL = URL + "metadata.json";
-
-  // load the model and metadata
-  // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-  // Note: the pose library adds a tmPose object to your window (window.tmPose)
 
   if (!model) {
     document.getElementById("loading_model").style.display = "block";
@@ -297,22 +292,16 @@ async function initModel() {
 
   maxPredictions = model.getTotalClasses();
 
-  // Convenience function to set up a webcam
   const size = 200;
-  const flip = true; // whether to flip the webcam
-  webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
-  console.log(webcam);
+  const flip = true; 
+  webcam = new tmPose.Webcam(size, size, flip); 
+
   await webcam.setup(); // request access to the webcam
   await webcam.play();
   if (!safe_mode) {
     webcam.pause();
   }
   await loop();
-  // append/get elements to the DOM
-  // const canvas = document.getElementById("canvas");
-  // canvas.width = size;
-  // canvas.height = size;
-  // ctx = canvas.getContext("2d");
 }
 
 async function loop(timestamp) {
@@ -323,10 +312,7 @@ async function loop(timestamp) {
 }
 
 async function predict() {
-  // Prediction #1: run input through posenet
-  // estimatePose can take in an image, video or canvas html element
   const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-  // Prediction 2: run input through teachable machine classification model
   const prediction = await model.predict(posenetOutput);
 
   for (let i = 0; i < maxPredictions; i++) {
@@ -335,9 +321,8 @@ async function predict() {
 
     if (prediction[i].probability.toFixed(2) > 0.8) {
       if (prediction[i].className == "Correct") {
-        console.log("Correct");
+        // do nothing
       } else {
-        console.log("Wrong");
         cameraOff();
       }
     }
@@ -349,7 +334,5 @@ async function cameraOff() {
   if (safe_mode) {
     await localTracks[1].setMuted(true);
     document.getElementById("camera-button").classList.remove("active");
-  } else {
-    console.log("Not in safe mode");
   }
 }
