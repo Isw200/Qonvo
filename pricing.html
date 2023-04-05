@@ -1,116 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pricing</title>
-
+    <title>Pricing</title>
     <link rel="stylesheet" href="styles/pricing.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="styles/main.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="styles/navbar.css"
     />
   </head>
   <body>
-    <nav class="navbar" id="navbar">
-      <div class="navbar__container">
-        <a href="#" class="navbar__logo">
-          <img src="images/Qonvo-logo.png" alt="" srcset="" />
-          <h2>Qonvo</h2>
-        </a>
-        <div class="cl-effect-5">
-          <a href="lobby.html"><span data-hover="Home">Home</span></a>
-          <a href="lobby.html"><span data-hover="Meeting">Meeting</span></a>
-          <a href="#"><span data-hover="Pricing">Pricing</span></a>
-          <a href="#"><span data-hover="Contact">Contact</span></a>
+    <div id="nav">
+      <nav class="navbar" id="navbar">
+        <div class="navbar__container">
+          <a href="#" class="navbar__logo">
+            <img src="images/Qonvo-logo.png" alt="" srcset="" />
+            <h2>Qonvo</h2>
+          </a>
+
+          <div class="cl-effect-5">
+            <a href="lobby.html"><span data-hover="Home">Home</span></a>
+            <a href="lobby.html"><span data-hover="Meeting">Meeting</span></a>
+            <a href="#"><span data-hover="Pricing">Pricing</span></a>
+            <a href="#"><span data-hover="Contact">Contact</span></a>
+          </div>
+
+          <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+
+          <div class="user">
+            <div class="user_icon" href="">
+              <img src="images/2.PNG" alt="" />
+            </div>
+            <div class="user_name">
+              <h4>John Doe</h4>
+              <p>johndoe@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <h2>
+        <br />
+        Choose your plan
+      </h2>
+      <div class="price-row">
+        <div class="price-col">
+          <p>SBasic</p>
+          <h3>19$ <span>/month</span></h3>
+          <ul>
+            <li>Meetings</li>
+            <li>100 Users</li>
+            <li>Team Chat</li>
+          </ul>
+          <button>Add to Cart</button>
         </div>
 
-        <div class="navbar__toggle" id="mobile-menu">
-          <span class="bar"></span> <span class="bar"></span>
-          <span class="bar"></span>
+        <div class="price-col">
+          <p>Professional</p>
+          <h3>24$ <span>/month</span></h3>
+          <ul>
+            <li>Meetings</li>
+            <li>250 Users</li>
+            <li>Team Chat</li>
+            <li>Privacy Protected Camera</li>
+          </ul>
+          <button>Add to Cart</button>
         </div>
 
-        <div class="user">
-          <div class="user_icon" href="">
-            <img src="images/2.PNG" alt="" />
-          </div>
-          <div class="user_name">
-            <h4>John Doe</h4>
-            <p>johndoe@gmail.com</p>
-          </div>
+        <div class="price-col">
+          <p>Business</p>
+          <h3>39$ <span>/month</span></h3>
+          <ul>
+            <li>Meetings</li>
+            <li>500 Users</li>
+            <li>Team Chat</li>
+            <li>Privacy Protected Camera</li>
+            <li>Privacy Protected Microphone</li>
+            <li>Privacy Protected Chat</li>
+          </ul>
+          <button>Add to Cart</button>
         </div>
-      </div>
-    </nav>
-    <header>
-      <h1>
-        <br /><br /><br />
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-        mollitia tenetur quae atque, nostrum magnam natus fugiat debitis quo
-        nobis ducimus maiores id ad saepe. Dolorem similique totam unde omnis.
-      </h1>
-      <br />
-      <h2>Our Pricing</h2>
-      <div class="toggle">
-        <label>Annually </label>
-        <div class="toggle-btn">
-          <input type="checkbox" class="checkbox" id="checkbox" />
-          <label class="sub" id="sub" for="checkbox">
-            <div class="circle"></div>
-          </label>
-        </div>
-        <label> Monthly</label>
-      </div>
-    </header>
-    <div class="cards">
-      <div class="card shadow">
-        <ul>
-          <li class="pack">Basic</li>
-          <li id="basic" class="price bottom-bar">&dollar;FREE</li>
-          <li class="bottom-bar">Meetings</li>
-          <li class="bottom-bar">100 Users</li>
-          <li class="bottom-bar">Team chat</li>
-          <li class="bottom-bar">---------------------</li>
-          <li><button class="btn">Order Now</button></li>
-        </ul>
-      </div>
-      <div class="card active">
-        <ul>
-          <li class="pack">Professional</li>
-          <li id="professional" class="price bottom-bar">&dollar;249.99</li>
-          <li class="bottom-bar">Meetings</li>
-          <li class="bottom-bar">250 Users</li>
-          <li class="bottom-bar">10 GB Cloud Storage</li>
-          <li class="bottom-bar">Privacy Protected Camera</li>
-          <li><button class="btn active-btn">Order Now</button></li>
-        </ul>
-      </div>
-      <div class="card shadow">
-        <ul>
-          <li class="pack">Business</li>
-          <li id="master" class="price bottom-bar">&dollar;359.99</li>
-          <li class="bottom-bar">Meetings</li>
-          <li class="bottom-bar">500 Users</li>
-          <li class="bottom-bar">50 GB Cloud Storage</li>
-          <li class="bottom-bar">Privacy Protected Camera</li>
-          <li class="bottom-bar">Privacy Protected Chat</li>
-          <li class="bottom-bar">Privacy Protected Microphone</li>
-          <li><button class="btn">Order Now</button></li>
-        </ul>
       </div>
     </div>
-    <script src="js/script.js"></script>
+    <!-- footer -->
+    <section id="footer">
+      <img src="images/footer-img.png" class="footer-img" />
+      <div class="title-text">
+        <p>Contact</p>
+        <h1>Visit Our Website</h1>
+      </div>
+
+      <div class="footer-row">
+        <div class="footer-left">
+          <h1>About Us</h1>
+          <p>Customers</p>
+          <p>Our Team</p>
+          <p>Careers</p>
+          <p>Partners</p>
+          <p>Developer Platform</p>
+        </div>
+        <div class="footer-right">
+          <h1>Get in touch with us</h1>
+          <p>
+            <i class="fa fa-map-marker"></i>57,Ramakrishna Rd ,<br />Colombo 6,
+            Srilanka
+          </p>
+          <p><i class="fa fa-paper-plane"></i> qonvosupport@gmail.com</p>
+          <p><i class="fa fa-phone"></i>0774887051</p>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <p>
+          Copyright 2023,Team Greengust | Terms | Privacy | Trust Center | Legal
+          & Compliance | Cookie Preferences
+        </p>
+      </div>
+    </section>
   </body>
 </html>
