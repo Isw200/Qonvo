@@ -395,7 +395,7 @@
       z-index: 1;
       display: inline-block;
   }
-  .title-text p::after{
+  /* .title-text p::after{
       content: "";
       width: 50%;
       height: 35px;
@@ -407,7 +407,7 @@
       transform:rotate(10deg);
       border-top-left-radius: 35px;
       border-bottom-right-radius: 35px;
-  }
+  } */
 .title-text h1{
       font-size: 50px;
   }
