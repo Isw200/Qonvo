@@ -1,42 +1,39 @@
-from flask import Flask, request, jsonify
 from keras.models import load_model
-from PIL import Image, ImageOps
 import numpy as np
+import flask
+import io
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
+model = None
 
-# Load the pre-trained Keras model and class names
-model = load_model("keras_model.h5", compile=False)
-class_names = open("labels.txt", "r").readlines()
+def load_keras_model():
+    global model
+    model = load_model('ML/keras_model.h5')
 
-@app.route("/predict", methods=["GET", "POST"])
+def preprocess_image(image):
+    image = image.convert('RGB')
+    image = image.resize((224, 224))
+    image = np.array(image)
+    image = image / 255.0
+    image = image.reshape((1, 224, 224, 3))
+    return image
+
+@app.route("/predict", methods=["POST"])
 def predict():
-    # Get the uploaded image file from the request
-    file = request.files["image"]
-
-    # Load the image file using PIL
-    image = Image.open(file).convert("RGB")
-
-    # Resize and normalize the image
-    size = (224, 224)
-    image = ImageOps.fit(image, size, Image.LANCZOS)
-    image_array = np.asarray(image)
-    normalized_image_array = (image_array.astype(np.float32) / 127.5) - 1
-
-    # Make a prediction with the model
-    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    data[0] = normalized_image_array
-    prediction = model.predict(data)
-    index = np.argmax(prediction)
-    class_name = class_names[index]
-    confidence_score = prediction[0][index]
-
-    # Return the predicted class name and confidence score as a JSON response
-    response = {
-        "class_name": class_name[2:],
-        "confidence_score": float(confidence_score)
-    }
-    return jsonify(response)
+    data = {"success": False}
+    if flask.request.method == "POST":
+        if flask.request.files.get("image"):
+            image = flask.request.files["image"].read()
+            image = Image.open(io.BytesIO(image))
+            image = preprocess_image(image)
+            preds = model.predict(image)
+            label_names = [line.strip() for line in open('ML/labels.txt')]
+            pred_labels = label_names[np.argmax(preds)]
+            data["predictions"] = pred_labels
+            data["success"] = True
+    return flask.jsonify(data)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    print("Loading Keras model...")
+    load_keras_model()
+    app.run()

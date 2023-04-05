@@ -160,9 +160,8 @@ attachbutton.onclick = () => {
 
 input.addEventListener("change", function () {
   file = this.files[0];
-  console.log(file);
   dropArea.classList.add("active");
-  showFile();
+  beforePredictImage(file);
 });
 
 dropArea.addEventListener("dragover", (event) => {
@@ -181,8 +180,51 @@ dropArea.addEventListener("dragleave", () => {
 dropArea.addEventListener("drop", (event) => {
   event.preventDefault();
   file = event.dataTransfer.files[0];
-  showFile();
+  beforePredictImage(file);
 });
+
+const OBJ_MDL_URL = "https://teachablemachine.withgoogle.com/models/3K2rCwpAX/";
+let objectModel, objectModelMaxPredictions;
+let imageForCanvas, canvas;
+
+function beforePredictImage(file) {
+  // Create a new FileReader instance
+  const reader = new FileReader();
+
+  reader.readAsDataURL(file);
+
+  reader.onload = function () {
+    imageForCanvas = new Image();
+    imageForCanvas.src = reader.result;
+  };
+
+  console.log("Image loaded");
+  // showFile();
+  initObjModel();
+}
+
+// Object detection model
+async function initObjModel() {
+  console.log("Loading Model...");
+  const modelURL = OBJ_MDL_URL + "model.json";
+  const metadataURL = OBJ_MDL_URL + "metadata.json";
+
+  objectModel = await tmImage.load(modelURL, metadataURL);
+  objectModelMaxPredictions = objectModel.getTotalClasses();
+
+  await predictImage();
+}
+
+// run the webcam image through the image objectModel
+async function predictImage() {
+  // predict can take in an image, video or canvas html element
+  const prediction = await objectModel.predict(imageForCanvas);
+  for (let i = 0; i < objectModelMaxPredictions; i++) {
+    const classPrediction =
+      prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    console.log(classPrediction);
+  }
+}
 
 let selectedImg_src = "";
 
@@ -190,7 +232,6 @@ let selectedImageContainer = document.getElementById("selectedImageContainer");
 let dragIcon = document.getElementById("dragIcons");
 let dragHeading = document.getElementById("dragHeader");
 let dragSpan = document.getElementById("dragSpan");
-
 
 function showFile() {
   selectedImageContainer.style.display = "block";
