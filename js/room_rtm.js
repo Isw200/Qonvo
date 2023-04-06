@@ -192,8 +192,10 @@ let safe_message_mode = false;
 // Turn on Safe Mode check
 safe_message_switch.addEventListener("click", async () => {
   if (safe_message_switch.checked) {
+    console.log("Safe message Mode On");
     safe_message_mode = true;
   } else {
+    console.log("Safe message Mode Off");
     safe_message_mode = false;
   }
 });
@@ -213,6 +215,7 @@ function beforePredictImage(file) {
     imageForCanvas.src = reader.result;
   };
 
+  console.log("Image loaded");
   showFile();
   if (safe_message_mode) {
     document.getElementById("licenceDetectedText").style.display = "block";
@@ -222,6 +225,7 @@ function beforePredictImage(file) {
 
 // Object detection model
 async function initObjModel() {
+  console.log("Loading Model...");
   const modelURL = OBJ_MDL_URL + "model.json";
   const metadataURL = OBJ_MDL_URL + "metadata.json";
 

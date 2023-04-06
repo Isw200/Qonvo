@@ -157,10 +157,12 @@
   }
   
   .user_name h4 {
+    padding-top: -5px;
     font-size: 1.2rem;
   }
   
   .user .user_name p {
+    padding-top: 20px;
     font-size: 0.8rem;
   }
   

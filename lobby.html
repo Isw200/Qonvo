@@ -24,6 +24,11 @@
       media="screen"
       href="styles/navbar.css"
     />
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="js/form.js"></script>
   </head>
   <body>
     <!-- navigation bar -->
@@ -64,14 +69,14 @@
 
         <div class="user">
           <div class="user_icon" href="">
-            <img src="images/2.PNG" alt="">
+            <div id="image-container"></div>
           </div>
           <div class="user_name">
-            <h4>John Doe</h4>
-            <p>johndoe@gmail.com</p>
+            <h4><span id="myobj2"></span></h4>
+            <p><span id="myobj"></span></p>
           </div>
         </div>
-       
+        <div id="button-container"></div>
       </div>
     </nav>
 
@@ -107,7 +112,7 @@
                     name="name"
                     required
                     placeholder="Enter your display name..."
-                  />
+                    />
                 </div>
                 <div class="form__field__wrapper">
                   <p>Meeting Title</p>
