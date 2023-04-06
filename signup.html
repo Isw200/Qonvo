@@ -4,24 +4,44 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Qonvo SignUp</title>
+    <link rel="icon" href="images/Qonvo-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/lobby.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/navbar.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/signup.css"/>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/main.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/lobby.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/navbar.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/signup.css"
+    />
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
     <script src="js/form.js"></script>
-    
   </head>
   <body>
     <!-- navigation bar -->
     <nav class="navbar" id="navbar">
       <div class="navbar__container">
         <a href="#" class="navbar__logo">
-          <img src="images/Qonvo-logo.png" alt="" srcset="">
+          <img src="images/Qonvo-logo.png" alt="" srcset="" />
           <h2>Qonvo</h2>
         </a>
         <div class="cl-effect-5">
@@ -47,35 +67,76 @@
 
         <div id="lobby__left__body">
           <p>
-            Streamline your meetings with our platform application. Effortlessly schedule, host and attend meetings from anywhere, using any device. Experience the difference in your work life.
+            Streamline your meetings with our platform application. Effortlessly
+            schedule, host and attend meetings from anywhere, using any device.
+            Experience the difference in your work life.
           </p>
         </div>
       </div>
 
       <!-- signup form -->
       <div id="lobby_right">
-        <p class="welcome"> Register your account</p>
-        <br>
-          <input type="text" id="username" name="username" placeholder="Create a user name (only letters and numbers)" Required>
-          <br>
-          
-          <input type="text" id="fname" name="fname" placeholder="Enter your First Name" Required>
-          <br>
-          
-          <input type="text" id="lname" name="lname" placeholder="Enter your Last name" Required>
-          <br>
-          
-          <input type="email" id="email" name="email" placeholder="Enter your valid Email" Required>
-          <br>
-          
-          <input type="password" id="pass1" name="pass1" placeholder="Enter a password" Required>
-          <br>
-          
-          <input type="password" id="pass2" name="pass2" placeholder="Enter Confirm Password" Required>
-          <br>
-          <button class="but" onclick="signUp(),save()" type="submit">sign up</button>
-          <label class="link">Have an account?<a href="login.html">Log in</a></label>
-            
+        <p class="welcome">Register your account</p>
+        <br />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Create a user name (only letters and numbers)"
+          required
+        />
+        <br />
+
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          placeholder="Enter your First Name"
+          required
+        />
+        <br />
+
+        <input
+          type="text"
+          id="lname"
+          name="lname"
+          placeholder="Enter your Last name"
+          required
+        />
+        <br />
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your valid Email"
+          required
+        />
+        <br />
+
+        <input
+          type="password"
+          id="pass1"
+          name="pass1"
+          placeholder="Enter a password"
+          required
+        />
+        <br />
+
+        <input
+          type="password"
+          id="pass2"
+          name="pass2"
+          placeholder="Enter Confirm Password"
+          required
+        />
+        <br />
+        <button class="but" onclick="signUp(),save()" type="submit">
+          sign up
+        </button>
+        <label class="link"
+          >Have an account?<a href="login.html">Log in</a></label
+        >
       </div>
     </main>
   </body>
